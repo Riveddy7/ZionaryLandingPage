@@ -40,14 +40,14 @@ export default function HomePage() {
     };
 
     return (
-        <div className="bg-background text-foreground font-body antialiased">
+        <div className="bg-background text-foreground font-sans antialiased">
             <Navbar onLinkClick={{
                 features: () => scrollTo(featuresRef),
                 pricing: () => scrollTo(pricingRef),
                 testimonials: () => scrollTo(testimonialsRef),
             }} />
             <main>
-                <HeroSection onDiscoverClick={() => scrollTo(featuresRef)} />
+                <HeroSection />
                 <TrustBar />
                 <div ref={featuresRef}>
                     <FeaturesSection />
@@ -72,11 +72,11 @@ interface NavLinkProps {
 }
 
 const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
-    <header className="sticky top-0 z-50 w-full nav-glass border-b border-white/10">
+    <header className="sticky top-0 z-50 w-full bg-black border-b border-white/10">
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
             <div className="flex items-center gap-2">
                 <Sparkle className="h-7 w-7 text-primary" weight="fill" />
-                <span className="font-headline text-2xl font-bold text-foreground">Nexus</span>
+                <span className="font-sans text-2xl font-bold text-foreground">Nexus</span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
                 <button onClick={onLinkClick.features} className="text-muted-foreground transition-colors hover:text-primary">Características</button>
@@ -90,33 +90,51 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
     </header>
 );
 
-const HeroSection = ({ onDiscoverClick }: { onDiscoverClick: () => void }) => (
-    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden hero-bg">
-        <div className="container mx-auto px-4 z-10">
-            <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter">
-                Infraestructura compleja, gestión simple.
-            </h1>
-            <p className="font-body text-lg md:text-xl text-muted-foreground mt-8 max-w-3xl mx-auto">
-                El centro de mando visual e inteligente que tu data center merece.
-            </p>
-            <div className="mt-12">
-                <Button onClick={onDiscoverClick} size="lg" className="font-bold text-lg bg-primary/90 hover:bg-primary text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 h-14 px-10">
-                    Descubre el Poder de Nexus
-                </Button>
+const HeroSection = () => (
+    <section className="pt-24 md:pt-32">
+        <div className="relative max-w-5xl mx-auto px-8">
+            <div className="relative hero-frame-glow rounded-xl border border-white/10 p-8 md:p-20 text-center">
+                <div className="relative z-10">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+                        Infraestructura compleja, gestión simple.
+                    </h1>
+                    <p className="mt-6 max-w-2xl mx-auto text-lg lg:text-xl text-muted-foreground">
+                        Nexus es el centro de mando visual e inteligente que tu data center merece. Convierte el caos en claridad y toma el control total.
+                    </p>
+                    <div className="mt-10 flex justify-center items-center gap-4">
+                        <Button size="lg" className="px-6 py-3 font-semibold text-white bg-gradient-to-r from-[#8A78FF] to-[#7B61FF] rounded-lg shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+                            Iniciar Prueba Gratuita
+                        </Button>
+                        <Button size="lg" variant="outline" className="px-6 py-3 font-semibold bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-lg">
+                            Agendar una Demo
+                        </Button>
+                    </div>
+                </div>
+                <div className="relative mt-20">
+                    <Image
+                        src="https://placehold.co/1024x576"
+                        alt="Nexus Dashboard"
+                        width={1024}
+                        height={576}
+                        className="rounded-t-xl border border-white/10 shadow-2xl shadow-black/50"
+                        data-ai-hint="dashboard ui"
+                    />
+                </div>
             </div>
         </div>
     </section>
 );
+
 
 const TrustBar = () => {
     const logos = ["TechCorp", "Industrias de México", "Logística Global", "Bajanet", "Syscom"];
     return (
         <div className="py-12 bg-background">
             <div className="container mx-auto px-4 text-center">
-                <p className="mb-8 font-body text-sm font-semibold tracking-widest text-muted-foreground uppercase">CON LA CONFIANZA DE EQUIPOS EN:</p>
+                <p className="mb-8 font-sans text-sm font-semibold tracking-widest text-muted-foreground uppercase">CON LA CONFIANZA DE EQUIPOS EN:</p>
                 <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 md:gap-x-16">
                     {logos.map(logo => (
-                        <span key={logo} className="font-headline text-xl text-muted-foreground/60 transition-colors hover:text-muted-foreground/80">{logo}</span>
+                        <span key={logo} className="font-sans text-xl text-muted-foreground/60 transition-colors hover:text-muted-foreground/80">{logo}</span>
                     ))}
                 </div>
             </div>
@@ -199,7 +217,7 @@ const FeaturesSection = () => {
                         <div key={feature.title} id={`feature-chapter-${index}`} className="h-[90vh] flex items-center">
                             <div className={cn("transition-opacity duration-500", activeFeatureIndex === index ? "opacity-100" : "opacity-30")}>
                                 <div className="mb-6">{feature.icon}</div>
-                                <h3 className="font-headline text-4xl font-bold mb-4">{feature.title}</h3>
+                                <h3 className="font-sans text-4xl font-bold mb-4">{feature.title}</h3>
                                 <p className="text-muted-foreground text-lg max-w-md">{feature.description}</p>
                             </div>
                         </div>
@@ -233,8 +251,8 @@ const PricingSection = () => {
         <section className="py-20 lg:py-32 bg-background">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold">Un Plan para Cada Misión.</h2>
-                    <p className="font-body text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
+                    <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold">Un Plan para Cada Misión.</h2>
+                    <p className="font-sans text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
                         Precios transparentes diseñados para escalar contigo.
                     </p>
                     <div className="flex items-center justify-center gap-4 mt-8">
@@ -252,11 +270,11 @@ const PricingSection = () => {
                                 : "glass-card hover:border-primary/70 hover:scale-[1.02]"
                         )}>
                             <CardHeader className="pt-8">
-                                <CardTitle className={cn("font-headline text-2xl", plan.isHighlighted ? "text-primary" : "text-foreground")}>{plan.name}</CardTitle>
+                                <CardTitle className={cn("font-sans text-2xl", plan.isHighlighted ? "text-primary" : "text-foreground")}>{plan.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <div className="mb-6">
-                                    <span className="font-headline text-4xl font-bold">{plan.price}</span>
+                                    <span className="font-sans text-4xl font-bold">{plan.price}</span>
                                     <span className={cn("text-muted-foreground", plan.isHighlighted && "text-slate-500")}>{isAnnual ? ' /año' : ' /mes'}</span>
                                 </div>
                             </CardContent>
@@ -289,7 +307,7 @@ const TestimonialSection = () => (
                         />
                     </div>
                     <div className="md:col-span-2 p-8 md:p-12">
-                        <blockquote className="font-headline text-xl lg:text-2xl font-semibold leading-snug text-foreground">
+                        <blockquote className="font-sans text-xl lg:text-2xl font-semibold leading-snug text-foreground">
                             "Nexus transformó nuestro caos en claridad. Lo que antes nos tomaba días de auditoría manual, ahora lo vemos en segundos. Es, sin duda, la herramienta que nuestro data center merecía."
                         </blockquote>
                         <footer className="mt-6">
@@ -305,12 +323,12 @@ const TestimonialSection = () => (
 
 
 const LeadCaptureSection = () => (
-    <section className="py-20 lg:py-32 hero-bg">
+    <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+            <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                 ¿Listo para tomar el control?
             </h2>
-            <p className="font-body text-lg text-muted-foreground mt-6">
+            <p className="font-sans text-lg text-muted-foreground mt-6">
                 Prueba nuestro Diseñador de IDFs gratuito y experimenta la simplicidad y el poder de Nexus. Sin compromisos, sin tarjeta de crédito.
             </p>
             <form className="mt-10 max-w-lg mx-auto">
@@ -330,18 +348,18 @@ const Footer = () => (
         <div className="container mx-auto px-4 text-center">
             <div className="flex justify-center items-center gap-4 mb-6">
                 <Sparkle className="h-6 w-6 text-primary" weight="fill" />
-                <span className="font-headline text-xl font-bold text-foreground">Nexus</span>
+                <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
             </div>
             <div className="flex justify-center gap-6 mb-6">
                 <a href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
                     <Linkedin className="h-6 w-6" />
                 </a>
             </div>
-            <div className="flex justify-center gap-x-6 gap-y-2 flex-wrap mb-6 font-body text-sm">
+            <div className="flex justify-center gap-x-6 gap-y-2 flex-wrap mb-6 font-sans text-sm">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Términos de Servicio</a>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Política de Privacidad</a>
             </div>
-            <p className="text-muted-foreground font-body text-sm">
+            <p className="text-muted-foreground font-sans text-sm">
                 &copy; 2025 Nexus Technologies S.A.P.I. de C.V.
             </p>
         </div>
