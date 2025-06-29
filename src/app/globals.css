@@ -73,16 +73,16 @@
   .hero-frame-glow::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 10;
     left: 0;
     right: 0;
-    height: 200px;
+    height: 400px;
     background-image: linear-gradient(
         to bottom,
         hsl(var(--primary) / 0.4),
         transparent 80%
     );
-    filter: blur(60px);
+    filter: blur(20px);
     opacity: 0.8;
     z-index: 0;
     pointer-events: none;

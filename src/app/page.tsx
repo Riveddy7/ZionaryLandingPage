@@ -36,7 +36,7 @@ export default function HomePage() {
     const testimonialsRef = useRef<HTMLDivElement>(null);
 
     const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     };
 
     return (
@@ -72,29 +72,33 @@ interface NavLinkProps {
 }
 
 const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
-    <header className="sticky top-0 z-50 w-full bg-black border-b border-white/10">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4">
-            <div className="flex items-center gap-2">
-                <Sparkle className="h-7 w-7 text-primary" weight="fill" />
-                <span className="font-sans text-2xl font-bold text-foreground">Nexus</span>
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4">
+        <header className="w-full max-w-4xl mx-auto rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
+            <div className="flex h-14 items-center justify-between px-6">
+                <div className="flex items-center gap-2">
+                    <Sparkle className="h-6 w-6 text-primary" weight="fill" />
+                    <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
+                </div>
+                <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <button onClick={onLinkClick.features} className="text-muted-foreground transition-colors hover:text-primary">Características</button>
+                    <button onClick={onLinkClick.pricing} className="text-muted-foreground transition-colors hover:text-primary">Precios</button>
+                    <button onClick={onLinkClick.testimonials} className="text-muted-foreground transition-colors hover:text-primary">Testimonios</button>
+                </nav>
+                <Button size="sm" className="font-bold bg-primary/90 hover:bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
+                    Obtener Acceso
+                </Button>
             </div>
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-                <button onClick={onLinkClick.features} className="text-muted-foreground transition-colors hover:text-primary">Características</button>
-                <button onClick={onLinkClick.pricing} className="text-muted-foreground transition-colors hover:text-primary">Precios</button>
-                <button onClick={onLinkClick.testimonials} className="text-muted-foreground transition-colors hover:text-primary">Testimonios</button>
-            </nav>
-            <Button className="font-bold bg-primary/90 hover:bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
-                Obtener Acceso
-            </Button>
-        </div>
-    </header>
+        </header>
+    </div>
 );
 
 const HeroSection = () => (
-    <section className="pt-24 md:pt-32">
-        <div className="relative max-w-5xl mx-auto px-8">
-            <div className="relative hero-frame-glow rounded-xl border border-white/10 p-8 md:p-20 text-center">
-                <div className="relative z-10">
+    <section className="pt-28 md:pt-32 pb-10">
+        <div className="container max-w-6xl mx-auto px-4">
+            <div className="relative text-center overflow-hidden rounded-3xl border border-white/10 
+                           bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-background">
+                
+                <div className="relative z-10 px-6 pt-20 pb-10 md:pt-24 md:pb-12">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
                         Infraestructura compleja, gestión simple.
                     </h1>
@@ -110,13 +114,14 @@ const HeroSection = () => (
                         </Button>
                     </div>
                 </div>
-                <div className="relative mt-20">
-                    <Image
-                        src="https://placehold.co/1024x576"
+
+                <div className="relative z-0 px-4 md:px-8 -mt-4">
+                     <Image
+                        src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/floor-plans-optimized//unnamed.webp"
                         alt="Nexus Dashboard"
-                        width={1024}
-                        height={576}
-                        className="rounded-t-xl border border-white/10 shadow-2xl shadow-black/50"
+                        width={1200}
+                        height={800}
+                        className="w-full h-auto rounded-t-xl border-x border-t border-white/10 shadow-2xl shadow-black/50"
                         data-ai-hint="dashboard ui"
                     />
                 </div>
