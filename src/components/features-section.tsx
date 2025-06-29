@@ -4,31 +4,31 @@ import { Box, Database, Sparkles } from "lucide-react";
 const features = [
   {
     icon: <Box className="h-10 w-10 text-primary" />,
-    title: "Visualización Interactiva",
-    description: "Crea y manipula diseños complejos en tiempo real con nuestra interfaz intuitiva y potente.",
+    title: "Visualiza. No Más Adivinanzas.",
+    description: "Arrastra y suelta activos en racks virtuales, gestiona la capacidad en tiempo real y comprende tu infraestructura de un solo vistazo, como si estuvieras físicamente frente al rack.",
   },
   {
     icon: <Database className="h-10 w-10 text-primary" />,
-    title: "Documentación Centralizada",
-    description: "Mantén todos tus activos de diseño, componentes y guías de estilo en un solo lugar accesible.",
+    title: "Centraliza. Tu Única Fuente de Verdad.",
+    description: "Dile adiós a las hojas de cálculo obsoletas y a los diagramas de Visio perdidos. Unifica todo tu inventario, conectividad y estado de los activos en un solo lugar.",
   },
   {
     icon: <Sparkles className="h-10 w-10 text-primary" />,
-    title: "Asistente de IA Inteligente",
-    description: "Acelera tu flujo de trabajo con sugerencias inteligentes, generación de activos y optimización automática.",
+    title: "Optimiza. La Magia de la IA.",
+    description: "Nuestro Asistente IA te ayuda a tomar decisiones más inteligentes, recomendando la ubicación óptima para nuevos servidores basándose en la energía y capacidad disponible.",
   },
 ];
 
 export function FeaturesSection() {
   return (
-    <section id="caracteristicas" className="py-20 lg:py-32">
+    <section id="producto" className="py-20 lg:py-32">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">
-            Una Suite de Herramientas de Diseño Revolucionaria
+            El control que puedes ver.
           </h2>
           <p className="font-body text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Nexus Simplified combina visualización, documentación y IA para ofrecer una experiencia de diseño sin precedentes.
+            Nuestra plataforma está diseñada sobre tres pilares fundamentales que eliminan la incertidumbre y te devuelven el poder.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

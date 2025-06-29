@@ -2,50 +2,49 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 const plans = [
   {
-    name: "Básico",
-    price: "Gratis",
-    pricePeriod: "",
-    description: "Para individuos y pequeños equipos que empiezan a explorar.",
+    name: "Profesional",
+    price: "$2,500 USD",
+    pricePeriod: "/ año + IVA",
+    description: "",
     features: [
-      "1 Proyecto",
-      "Asistente IA Básico",
-      "5GB Almacenamiento",
-      "Soporte Comunitario"
+      "Hasta 5 Racks",
+      "Hasta 100 Activos",
+      "5 Usuarios",
+      "Asistente IA Básico"
     ],
-    cta: "Empezar Gratis",
+    cta: "Comprar Ahora",
     isHighlighted: false,
   },
   {
-    name: "Pro",
-    price: "$49",
-    pricePeriod: "/mes",
-    description: "La solución ideal para profesionales y equipos en crecimiento.",
+    name: "Business",
+    price: "$6,000 USD",
+    pricePeriod: "/ año + IVA",
+    description: "",
     features: [
-      "Proyectos Ilimitados",
-      "Asistente IA Avanzado",
-      "100GB Almacenamiento",
-      "Colaboración en Equipo",
-      "Soporte Prioritario"
+      "Hasta 20 Racks",
+      "Hasta 500 Activos",
+      "20 Usuarios",
+      "Reportes Avanzados y Alertas"
     ],
-    cta: "Elegir Plan Pro",
+    cta: "Contactar a Ventas",
     isHighlighted: true,
+    highlightLabel: "MÁS POPULAR",
   },
   {
-    name: "Empresarial",
-    price: "Custom",
+    name: "Enterprise",
+    price: "A Medida",
     pricePeriod: "",
-    description: "Para grandes organizaciones que necesitan soluciones a medida.",
+    description: "Para operaciones a gran escala, construyamos juntos una solución a tu medida.",
     features: [
-      "Todo en Pro",
-      "SSO & Seguridad Avanzada",
-      "Gestor de Cuenta Dedicado",
-      "SLA Personalizado",
-      "Onboarding y Formación"
+      "Racks y Activos Ilimitados",
+      "Acceso a API",
+      "Soporte Premium (SLA)"
     ],
-    cta: "Contactar Ventas",
+    cta: "Contactar a Ventas",
     isHighlighted: false,
   },
 ];
@@ -56,21 +55,24 @@ export function PricingSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">
-            Planes para Cada Necesidad
+            Un Plan para Cada Misión.
           </h2>
           <p className="font-body text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Elige el plan que se adapte a tu flujo de trabajo y escala a medida que creces.
+            Precios transparentes y diseñados para escalar contigo. Sin costos ocultos, sin sorpresas. Elige el plan que impulse tu operación hoy.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {plans.map((plan) => (
             <Card key={plan.name} className={cn(
-              "flex flex-col h-full", 
+              "flex flex-col h-full relative", 
               plan.isHighlighted ? "border-primary shadow-lg shadow-primary/20 -translate-y-2" : "border-border"
             )}>
+              {plan.highlightLabel && (
+                <Badge className="absolute -top-4 left-1/2 -translate-x-1/2">{plan.highlightLabel}</Badge>
+              )}
               <CardHeader className="text-center">
                 <CardTitle className="font-headline text-2xl text-primary">{plan.name}</CardTitle>
-                <CardDescription className="font-body">{plan.description}</CardDescription>
+                {plan.description && <CardDescription className="font-body pt-2">{plan.description}</CardDescription>}
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="text-center mb-6">

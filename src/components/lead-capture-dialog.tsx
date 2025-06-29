@@ -25,13 +25,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, Check } from "lucide-react";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
   email: z.string().email({ message: "Por favor, introduce un email válido." }),
-  company: z.string().optional(),
 });
+
+const benefits = [
+  "Crea diagramas profesionales en minutos.",
+  "Exporta tus diseños para cotizaciones y reportes.",
+  "Experimenta la magia de la interfaz de Nexus.",
+];
+
 
 export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -42,7 +48,6 @@ export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
     defaultValues: {
       fullName: "",
       email: "",
-      company: "",
     },
   });
 
@@ -55,21 +60,31 @@ export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
     form.reset();
 
     toast({
-      title: "¡Registro Exitoso!",
-      description: "Gracias por tu interés. Te mantendremos informado.",
+      title: "¡Acceso Concedido!",
+      description: "Revisa tu email para empezar a usar el diseñador.",
     });
   }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-card border-border">
-        <DialogHeader>
-          <DialogTitle className="font-headline text-2xl text-primary">Accede a la Beta</DialogTitle>
-          <DialogDescription className="font-body">
-            Regístrate para obtener acceso anticipado a Nexus Simplified.
+      <DialogContent className="sm:max-w-md bg-card border-border">
+        <DialogHeader className="text-center">
+          <DialogTitle className="font-headline text-2xl text-primary">Deja de Imaginar. Empieza a Verlo.</DialogTitle>
+          <DialogDescription className="font-body pt-2">
+            Obtén acceso inmediato a nuestro Diseñador de IDFs. Una herramienta 100% gratuita para planificar tus racks de forma visual e intuitiva.
           </DialogDescription>
         </DialogHeader>
+        
+        <div className="space-y-2 py-4">
+            {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                    <span className="font-body text-sm text-muted-foreground">{benefit}</span>
+                </div>
+            ))}
+        </div>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -90,38 +105,26 @@ export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-body text-muted-foreground">Email</FormLabel>
+                  <FormLabel className="font-body text-muted-foreground">Email de Trabajo</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="juan.perez@email.com" {...field} className="font-body" />
+                    <Input type="email" placeholder="juan.perez@tuempresa.com" {...field} className="font-body" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="company"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-body text-muted-foreground">Empresa (Opcional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Tu Empresa Inc." {...field} className="font-body"/>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <DialogFooter>
+            <DialogFooter className="flex flex-col items-center">
                <Button type="submit" disabled={isSubmitting} className="w-full font-body font-bold">
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Enviando...
+                    Accediendo...
                   </>
                 ) : (
-                  "Enviar Solicitud"
+                  "Acceder a la Herramienta Gratuita"
                 )}
               </Button>
+              <p className="text-xs text-muted-foreground mt-2">Respetamos tu privacidad. Sin spam.</p>
             </DialogFooter>
           </form>
         </Form>
