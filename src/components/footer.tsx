@@ -9,33 +9,33 @@ export function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Sparkle className="h-6 w-6 text-primary" />
-              <span className="font-headline text-xl font-bold">Nexus</span>
+              <span className="font-headline text-xl font-bold text-foreground">Nexus</span>
             </Link>
             <p className="text-muted-foreground text-sm font-body">Infraestructura compleja, gestión simple.</p>
           </div>
 
           <div>
-            <h3 className="font-headline font-bold mb-4">Producto</h3>
+            <h3 className="font-headline font-bold mb-4 text-foreground/90">Producto</h3>
             <ul className="space-y-2 font-body text-sm">
-              <li><Link href="#producto" className="text-muted-foreground hover:text-primary">Características</Link></li>
-              <li><Link href="#precios" className="text-muted-foreground hover:text-primary">Precios</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary">Diseñador Gratuito</Link></li>
+              <li><Link href="#producto" className="text-muted-foreground hover:text-primary transition-colors">Características</Link></li>
+              <li><Link href="#precios" className="text-muted-foreground hover:text-primary transition-colors">Precios</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Diseñador Gratuito</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-headline font-bold mb-4">Compañía</h3>
+            <h3 className="font-headline font-bold mb-4 text-foreground/90">Compañía</h3>
             <ul className="space-y-2 font-body text-sm">
-              <li><Link href="#sobre-nosotros" className="text-muted-foreground hover:text-primary">Sobre Nosotros</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary">Blog</Link></li>
-              <li><a href="mailto:contacto@nexus.com" className="text-muted-foreground hover:text-primary">Contacto</a></li>
+              <li><Link href="#sobre-nosotros" className="text-muted-foreground hover:text-primary transition-colors">Sobre Nosotros</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><a href="mailto:contacto@nexus.com" className="text-muted-foreground hover:text-primary transition-colors">Contacto</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-headline font-bold mb-4">Conecta con nosotros</h3>
+            <h3 className="font-headline font-bold mb-4 text-foreground/90">Conecta con nosotros</h3>
             <div className="flex space-x-4">
-              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary">
+              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-6 w-6" />
               </Link>
             </div>

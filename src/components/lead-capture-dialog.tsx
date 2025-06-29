@@ -68,18 +68,18 @@ export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-card border-border">
+      <DialogContent className="sm:max-w-md bg-card border-border/80 glow-shadow">
         <DialogHeader className="text-center">
           <DialogTitle className="font-headline text-2xl text-primary">Deja de Imaginar. Empieza a Verlo.</DialogTitle>
-          <DialogDescription className="font-body pt-2">
+          <DialogDescription className="font-body pt-2 text-muted-foreground">
             Obtén acceso inmediato a nuestro Diseñador de IDFs. Una herramienta 100% gratuita para planificar tus racks de forma visual e intuitiva.
           </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-2 py-4">
             {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                <div key={index} className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <span className="font-body text-sm text-muted-foreground">{benefit}</span>
                 </div>
             ))}
@@ -113,8 +113,8 @@ export function LeadCaptureDialog({ children }: { children: React.ReactNode }) {
                 </FormItem>
               )}
             />
-            <DialogFooter className="flex flex-col items-center">
-               <Button type="submit" disabled={isSubmitting} className="w-full font-body font-bold">
+            <DialogFooter className="flex flex-col items-center pt-2">
+               <Button type="submit" disabled={isSubmitting} className="w-full font-body font-bold glow-shadow transition-all duration-300 hover:scale-105">
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
