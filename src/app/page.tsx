@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Linkedin } from "lucide-react";
 import { Sparkle, Cube, Database } from "@phosphor-icons/react";
 import Image from "next/image";
+import { FeaturesMosaic } from '@/components/features-mosaic';
 
 const useScrollObserver = (options: IntersectionObserverInit) => {
     const [elements, setElements] = useState<HTMLElement[]>([]);
@@ -40,7 +41,7 @@ export default function HomePage() {
     };
 
     return (
-        <div className="bg-background text-foreground font-sans antialiased">
+        <div className="bg-[#111111] text-foreground font-sans antialiased">
             <Navbar onLinkClick={{
                 features: () => scrollTo(featuresRef),
                 pricing: () => scrollTo(pricingRef),
@@ -50,7 +51,7 @@ export default function HomePage() {
                 <HeroSection />
                 <TrustBar />
                 <div ref={featuresRef}>
-                    <FeaturesSection />
+                    <FeaturesMosaic />
                 </div>
                 <div ref={pricingRef}>
                     <PricingSection />
@@ -93,12 +94,12 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
 );
 
 const HeroSection = () => (
-    <section className="pt-28 md:pt-32 pb-10">
-        <div className="container max-w-6xl mx-auto px-4">
+    <section className="pt-28 md:pt-25 pb-10">
+        <div className="container max-w-6xl mx-auto px-5">
             <div className="relative text-center overflow-hidden rounded-3xl border border-white/10 
-                           bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-background">
+                           bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-background">
                 
-                <div className="relative z-10 px-6 pt-20 pb-10 md:pt-24 md:pb-12">
+                <div className="relative z-10 px-6 pt-20 pb-10 md:pt-16 md:pb-15">
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
                         Infraestructura compleja, gestión simple.
                     </h1>
@@ -115,7 +116,7 @@ const HeroSection = () => (
                     </div>
                 </div>
 
-                <div className="relative z-0 px-4 md:px-8 -mt-4">
+                <div className="relative z-0 px-4 md:px-8 -mt-7">
                      <Image
                         src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/floor-plans-optimized//unnamed.webp"
                         alt="Nexus Dashboard"
@@ -134,7 +135,7 @@ const HeroSection = () => (
 const TrustBar = () => {
     const logos = ["TechCorp", "Industrias de México", "Logística Global", "Bajanet", "Syscom"];
     return (
-        <div className="py-12 bg-background">
+        <div className="py-12 bg-[#111111]">
             <div className="container mx-auto px-4 text-center">
                 <p className="mb-8 font-sans text-sm font-semibold tracking-widest text-muted-foreground uppercase">CON LA CONFIANZA DE EQUIPOS EN:</p>
                 <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 md:gap-x-16">
@@ -146,93 +147,6 @@ const TrustBar = () => {
         </div>
     );
 };
-
-const features = [
-    {
-        icon: <Cube size={32} className="text-primary" weight="light" />,
-        title: "Visualiza. Control Total.",
-        description: "Arrastra y suelta activos en racks virtuales fotorrealistas. Gestiona la capacidad, el peso y la energía en tiempo real. Es tu centro de datos completo, en una sola pantalla.",
-        image: "https://placehold.co/1200x800",
-        aiHint: "rack visualization"
-    },
-    {
-        icon: <Database size={32} className="text-primary" weight="light" />,
-        title: "Centraliza. La Única Fuente de Verdad.",
-        description: "Dile adiós para siempre a las hojas de cálculo. Unifica tu inventario de hardware, contratos de soporte y documentación de red en un solo lugar accesible y siempre actualizado.",
-        image: "https://placehold.co/1200x800",
-        aiHint: "inventory report"
-    },
-    {
-        icon: <Sparkle size={32} className="text-primary" weight="light" />,
-        title: "Optimiza. Con la Magia de la IA.",
-        description: "Nuestro Asistente IA analiza tu infraestructura para recomendarte la ubicación perfecta para nuevos servidores, identificar riesgos de capacidad y automatizar tus reportes.",
-        image: "https://placehold.co/1200x800",
-        aiHint: "ai assistant popup"
-    }
-];
-
-const FeaturesSection = () => {
-    const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
-    const [featureRefs, setFeatureRefs] = useState<(HTMLElement | null)[]>([]);
-
-    useEffect(() => {
-        const refs = features.map((_, i) => document.getElementById(`feature-chapter-${i}`));
-        setFeatureRefs(refs as HTMLElement[]);
-    }, []);
-
-    const [setElements, entries] = useScrollObserver({ threshold: 0.6, rootMargin: "0px 0px -40% 0px" });
-
-    useEffect(() => {
-        setElements(featureRefs.filter(el => el !== null));
-    }, [featureRefs, setElements]);
-
-    useEffect(() => {
-        const intersectingEntry = entries.find(entry => entry.isIntersecting);
-        if (intersectingEntry) {
-            const index = parseInt(intersectingEntry.target.id.split('-')[2], 10);
-            setActiveFeatureIndex(index);
-        }
-    }, [entries]);
-
-    return (
-        <section className="py-20 lg:py-32 min-h-[300vh] container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
-                <div className="sticky top-24 h-[60vh] md:h-[80vh] w-full">
-                    <div className="relative w-full h-full rounded-2xl bg-slate-900/40 p-4 border border-white/10 shadow-2xl shadow-primary/10">
-                        <div className="w-full h-full rounded-lg overflow-hidden relative">
-                            {features.map((feature, index) => (
-                                <Image
-                                    key={feature.title}
-                                    src={feature.image}
-                                    alt={feature.title}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    className={cn(
-                                        "object-cover transition-opacity duration-700 ease-in-out",
-                                        activeFeatureIndex === index ? "opacity-100" : "opacity-0"
-                                    )}
-                                    data-ai-hint={feature.aiHint}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-16 md:gap-0">
-                    {features.map((feature, index) => (
-                        <div key={feature.title} id={`feature-chapter-${index}`} className="h-[90vh] flex items-center">
-                            <div className={cn("transition-opacity duration-500", activeFeatureIndex === index ? "opacity-100" : "opacity-30")}>
-                                <div className="mb-6">{feature.icon}</div>
-                                <h3 className="font-sans text-4xl font-bold mb-4">{feature.title}</h3>
-                                <p className="text-muted-foreground text-lg max-w-md">{feature.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
 
 const PricingSection = () => {
     const [isAnnual, setIsAnnual] = useState(false);
@@ -253,7 +167,7 @@ const PricingSection = () => {
     const currentPlans = isAnnual ? plans.annual : plans.monthly;
 
     return (
-        <section className="py-20 lg:py-32 bg-background">
+        <section className="py-20 lg:py-32 bg-[#111111]">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold">Un Plan para Cada Misión.</h2>
