@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    X, Database, Stack, Plug, MapTrifold, Sparkle, 
-    ChartBar, RocketLaunch, Broom, Lightning 
-} from '@phosphor-icons/react';
+    X, Database, Layers, Plug, Map, Sparkle, 
+    BarChart, Rocket, ListChecks, Zap 
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -20,7 +20,7 @@ const jewelCards = [
     { 
         id: 'racks',
         position: 'col-span-2',
-        icon: <Stack weight="light" className="w-8 h-8" />,
+        icon: <Layers className="w-8 h-8" />,
         title: "Visualizador de Racks",
         modal: {
             title: "Visualizador de Racks Interactivo",
@@ -32,7 +32,7 @@ const jewelCards = [
     { 
         id: 'connectivity',
         position: 'col-start-3 col-span-2',
-        icon: <Plug weight="light" className="w-8 h-8" />,
+        icon: <Plug className="w-8 h-8" />,
         title: "Gestión de Conectividad",
         modal: {
             title: "Conectividad de Puerto a Puerto",
@@ -44,7 +44,7 @@ const jewelCards = [
     { 
         id: 'floor-plans',
         position: 'col-start-4 row-span-2',
-        icon: <MapTrifold weight="light" className="w-8 h-8" />,
+        icon: <Map className="w-8 h-8" />,
         title: "Planos de Planta",
         modal: {
             title: "Planos de Planta Vivos",
@@ -58,31 +58,31 @@ const jewelCards = [
 const flipCardsData = [
     {
         position: "col-start-3",
-        icon: <ChartBar weight="light" className="w-8 h-8" />,
+        icon: <BarChart className="w-8 h-8" />,
         title: "Reportes Automatizados",
         back: "Genera informes de inventario, capacidad y auditoría con un solo clic. Deja de perder horas en Excel y presenta datos profesionales."
     },
     {
         position: "col-start-4",
-        icon: <RocketLaunch weight="light" className="w-8 h-8" />,
+        icon: <Rocket className="w-8 h-8" />,
         title: "ROI Rápido",
         back: "Cada hora que ahorras y cada error que evitas se traduce en dinero. Nexus está diseñado para pagarse solo en los primeros meses de uso."
     },
     {
         position: "col-start-1 row-start-2",
-        icon: <Sparkle weight="light" className="w-8 h-8" />,
+        icon: <Sparkle className="w-8 h-8" />,
         title: "Asistido por IA",
         back: "Nuestro asistente analiza tu infraestructura para darte recomendaciones inteligentes, desde dónde colocar un servidor hasta cómo optimizar el consumo energético."
     },
     {
         position: "col-start-1 row-start-3",
-        icon: <Lightning weight="light" className="w-8 h-8" />,
+        icon: <Zap className="w-8 h-8" />,
         title: "Plataforma Moderna",
         back: "Construido con tecnología de punta (Next.js, Supabase) para una experiencia de usuario rápida, segura y confiable en cualquier dispositivo."
     },
     {
         position: "col-start-2 row-start-4",
-        icon: <Broom weight="light" className="w-8 h-8" />,
+        icon: <ListChecks className="w-8 h-8" />,
         title: "Claridad y Orden",
         back: "Reemplaza el caos de notas y diagramas con un sistema centralizado que trae paz mental y control total a tu equipo de operaciones."
     },
@@ -157,7 +157,7 @@ const JewelCard = ({ icon, title, onClick, position }: { icon: React.ReactNode, 
 
 const HeroCard = () => (
     <div className="col-start-2 col-span-2 row-start-2 row-span-2 w-full h-full bg-[#1A1A1A] border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
-         <Database weight="light" className="w-16 h-16 text-primary mb-4" />
+         <Database className="w-16 h-16 text-primary mb-4" />
          <h3 className="font-bold text-3xl font-sans text-white uppercase tracking-wider">Única Fuente de Verdad</h3>
          <p className="text-muted-foreground mt-2 font-sans">Centraliza tu inventario, conectividad y documentación.</p>
     </div>

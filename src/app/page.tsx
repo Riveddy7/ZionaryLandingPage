@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
-import { Linkedin } from "lucide-react";
-import { Sparkle, Cube, Database } from "@phosphor-icons/react";
+import { Linkedin, Sparkle } from "lucide-react";
 import Image from "next/image";
 import { FeaturesMosaic } from '@/components/features-mosaic';
 
@@ -77,7 +76,7 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
         <header className="w-full max-w-4xl mx-auto rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
             <div className="flex h-14 items-center justify-between px-6">
                 <div className="flex items-center gap-2">
-                    <Sparkle className="h-6 w-6 text-primary" weight="fill" />
+                    <Sparkle className="h-6 w-6 text-primary" fill="currentColor" />
                     <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
                 </div>
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -266,7 +265,7 @@ const Footer = () => (
     <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-4 text-center">
             <div className="flex justify-center items-center gap-4 mb-6">
-                <Sparkle className="h-6 w-6 text-primary" weight="fill" />
+                <Sparkle className="h-6 w-6 text-primary" fill="currentColor" />
                 <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
             </div>
             <div className="flex justify-center gap-6 mb-6">
