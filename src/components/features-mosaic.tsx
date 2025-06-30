@@ -20,7 +20,7 @@ const jewelCards = [
     { 
         id: 'racks',
         position: 'col-span-2',
-        icon: <Server className="w-8 h-8" />,
+        icon: <Server className="w-10 h-10" />,
         title: "Visualizador de Racks",
         modal: {
             title: "Visualizador de Racks Interactivo",
@@ -57,18 +57,6 @@ const jewelCards = [
 
 const flipCardsData = [
     {
-        position: "col-start-3",
-        icon: <BarChart className="w-8 h-8" />,
-        title: "Reportes Automatizados",
-        back: "Genera informes de inventario, capacidad y auditoría con un solo clic. Deja de perder horas en Excel y presenta datos profesionales."
-    },
-    {
-        position: "col-start-4",
-        icon: <Rocket className="w-8 h-8" />,
-        title: "ROI Rápido",
-        back: "Cada hora que ahorras y cada error que evitas se traduce en dinero. Nexus está diseñado para pagarse solo en los primeros meses de uso."
-    },
-    {
         position: "col-start-1 row-start-2",
         icon: <Sparkle className="w-8 h-8" />,
         title: "Asistido por IA",
@@ -81,11 +69,29 @@ const flipCardsData = [
         back: "Construido con tecnología de punta (Next.js, Supabase) para una experiencia de usuario rápida, segura y confiable en cualquier dispositivo."
     },
     {
-        position: "col-start-2 row-start-4",
+        position: "col-start-1 row-start-4",
         icon: <ListChecks className="w-8 h-8" />,
         title: "Claridad y Orden",
         back: "Reemplaza el caos de notas y diagramas con un sistema centralizado que trae paz mental y control total a tu equipo de operaciones."
     },
+    {
+        position: "col-start-2 row-start-4",
+        icon: <BarChart className="w-8 h-8" />,
+        title: "Reportes Automatizados",
+        back: "Genera informes de inventario, capacidad y auditoría con un solo clic. Deja de perder horas en Excel y presenta datos profesionales."
+    },
+    {
+        position: "col-start-3 row-start-4",
+        icon: <Rocket className="w-8 h-8" />,
+        title: "ROI Rápido",
+        back: "Cada hora que ahorras y cada error que evitas se traduce en dinero. Nexus está diseñado para pagarse solo en los primeros meses de uso."
+    },
+    {
+        position: "col-start-4 row-start-4",
+        icon: <Box className="w-8 h-8" />,
+        title: "Inventario Preciso",
+        back: "Ten un registro exacto de cada activo, su ubicación y su estado. La base para una gestión sin errores."
+    }
 ];
 
 
@@ -175,7 +181,7 @@ export function FeaturesMosaic() {
     };
 
     return (
-        <section className="bg-[#111111] py-20 lg:py-32">
+        <section className="bg-[#111111] py-20 lg:py-24">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="font-bold text-5xl lg:text-6xl text-white font-sans">Un Sistema Operativo para tu Infraestructura</h2>
@@ -184,7 +190,7 @@ export function FeaturesMosaic() {
                     </p>
                 </div>
                 
-                <div className="grid grid-cols-4 grid-rows-4 gap-4 aspect-[4/3] max-w-6xl mx-auto">
+                <div className="grid grid-cols-4 grid-rows-4 gap-4 aspect-[16/9] max-w-6xl mx-auto">
                     <HeroCard />
 
                     {jewelCards.map(card => (
