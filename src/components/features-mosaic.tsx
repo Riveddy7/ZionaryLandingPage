@@ -157,8 +157,8 @@ const JewelCard = ({ icon, title, onClick, position }: { icon: React.ReactNode, 
 );
 
 const HeroCard = () => (
-    <div className="col-start-2 col-span-2 row-start-2 row-span-2 w-full h-full bg-primary/20 border border-primary/30 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center text-center">
-         <h3 className="font-bold text-5xl font-sans text-primary-foreground uppercase tracking-wider">Control Total</h3>
+    <div className="col-start-2 col-span-2 row-start-2 row-span-2 w-full h-full bg-black border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+         <h3 className="font-bold text-5xl font-sans text-primary tracking-wider">Control Total</h3>
     </div>
 );
 
