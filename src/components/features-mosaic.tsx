@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     X, Database, Layers, Plug, Map, Sparkle, 
-    BarChart, Rocket, ListChecks, Zap 
+    BarChart, Rocket, ListChecks, Zap, Cable, Server, Box
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -20,7 +20,7 @@ const jewelCards = [
     { 
         id: 'racks',
         position: 'col-span-2',
-        icon: <Layers className="w-8 h-8" />,
+        icon: <Server className="w-8 h-8" />,
         title: "Visualizador de Racks",
         modal: {
             title: "Visualizador de Racks Interactivo",
@@ -32,7 +32,7 @@ const jewelCards = [
     { 
         id: 'connectivity',
         position: 'col-start-3 col-span-2',
-        icon: <Plug className="w-8 h-8" />,
+        icon: <Cable className="w-8 h-8" />,
         title: "Gestión de Conectividad",
         modal: {
             title: "Conectividad de Puerto a Puerto",
@@ -150,16 +150,15 @@ const FlipCard = ({ icon, title, back, position }: { icon: React.ReactNode, titl
 
 const JewelCard = ({ icon, title, onClick, position }: { icon: React.ReactNode, title: string, onClick: () => void, position: string }) => (
     <div className={cn("w-full h-full bg-[#1A1A1A] border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 transition-colors", position)} onClick={onClick}>
+        
         <div className="text-primary mb-4">{icon}</div>
         <h4 className="font-bold text-lg font-sans text-white">{title}</h4>
     </div>
 );
 
 const HeroCard = () => (
-    <div className="col-start-2 col-span-2 row-start-2 row-span-2 w-full h-full bg-[#1A1A1A] border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
-         <Database className="w-16 h-16 text-primary mb-4" />
-         <h3 className="font-bold text-3xl font-sans text-white uppercase tracking-wider">Única Fuente de Verdad</h3>
-         <p className="text-muted-foreground mt-2 font-sans">Centraliza tu inventario, conectividad y documentación.</p>
+    <div className="col-start-2 col-span-2 row-start-2 row-span-2 w-full h-full bg-primary/20 border border-primary/30 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center text-center">
+         <h3 className="font-bold text-5xl font-sans text-primary-foreground uppercase tracking-wider">Control Total</h3>
     </div>
 );
 
