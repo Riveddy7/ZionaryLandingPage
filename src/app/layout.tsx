@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Nexus Simplified',
-  description: 'Crea Visuales Impresionantes con el Poder de la IA',
+  title: 'Zionary',
+  description: 'Tu santuario de orden para la infraestructura compleja.',
 };
 
 export default function RootLayout({

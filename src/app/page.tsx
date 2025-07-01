@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Linkedin, Sparkle } from "lucide-react";
 import Image from "next/image";
 import { FeaturesMosaic } from '@/components/features-mosaic';
+import { HeroSection } from '@/components/hero-section';
 
 const useScrollObserver = (options: IntersectionObserverInit) => {
     const [elements, setElements] = useState<HTMLElement[]>([]);
@@ -73,11 +74,11 @@ interface NavLinkProps {
 
 const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4">
-        <header className="w-full max-w-4xl mx-auto rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
+        <header className="w-full max-w-4xl mx-auto rounded-full border border-white/10 bg-black/80 backdrop-blur-md">
             <div className="flex h-14 items-center justify-between px-6">
                 <div className="flex items-center gap-2">
                     <Sparkle className="h-6 w-6 text-primary" fill="currentColor" />
-                    <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
+                    <span className="font-sans text-xl font-bold text-foreground">Zionary</span>
                 </div>
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
                     <button onClick={onLinkClick.features} className="text-muted-foreground transition-colors hover:text-primary">Características</button>
@@ -85,51 +86,12 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
                     <button onClick={onLinkClick.testimonials} className="text-muted-foreground transition-colors hover:text-primary">Testimonios</button>
                 </nav>
                 <Button size="sm" className="font-bold bg-primary/90 hover:bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
-                    Obtener Acceso
+                    Entrar a Zionary
                 </Button>
             </div>
         </header>
     </div>
 );
-
-const HeroSection = () => (
-    <section className="pt-28 md:pt-25 pb-10">
-        <div className="container max-w-6xl mx-auto px-5">
-            <div className="relative text-center overflow-hidden rounded-3xl border border-white/10 
-                           bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-background">
-                
-                <div className="relative z-10 px-6 pt-20 pb-10 md:pt-16 md:pb-15">
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
-                        Infraestructura compleja, gestión simple.
-                    </h1>
-                    <p className="mt-6 max-w-2xl mx-auto text-lg lg:text-xl text-muted-foreground">
-                        Nexus es el centro de mando visual e inteligente que tu data center merece. Convierte el caos en claridad y toma el control total.
-                    </p>
-                    <div className="mt-10 flex justify-center items-center gap-4">
-                        <Button size="lg" className="px-6 py-3 font-semibold text-white bg-gradient-to-r from-[#8A78FF] to-[#7B61FF] rounded-lg shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
-                            Iniciar Prueba Gratuita
-                        </Button>
-                        <Button size="lg" variant="outline" className="px-6 py-3 font-semibold bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-lg">
-                            Agendar una Demo
-                        </Button>
-                    </div>
-                </div>
-
-                <div className="relative z-0 px-4 md:px-8 -mt-7">
-                     <Image
-                        src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/floor-plans-optimized//unnamed.webp"
-                        alt="Nexus Dashboard"
-                        width={1200}
-                        height={800}
-                        className="w-full h-auto rounded-t-xl border-x border-t border-white/10 shadow-2xl shadow-black/50"
-                        data-ai-hint="dashboard ui"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-);
-
 
 const TrustBar = () => {
     const logos = ["TechCorp", "Industrias de México", "Logística Global", "Bajanet", "Syscom"];
@@ -226,7 +188,7 @@ const TestimonialSection = () => (
                     </div>
                     <div className="md:col-span-2 p-8 md:p-12">
                         <blockquote className="font-sans text-xl lg:text-2xl font-semibold leading-snug text-foreground">
-                            "Nexus transformó nuestro caos en claridad. Lo que antes nos tomaba días de auditoría manual, ahora lo vemos en segundos. Es, sin duda, la herramienta que nuestro data center merecía."
+                            "Zionary transformó nuestro caos en claridad. Lo que antes nos tomaba días de auditoría manual, ahora lo vemos en segundos. Es, sin duda, la herramienta que nuestro data center merecía."
                         </blockquote>
                         <footer className="mt-6">
                             <p className="font-bold text-lg text-foreground/90">Carlos Valenzuela</p>
@@ -247,7 +209,7 @@ const LeadCaptureSection = () => (
                 ¿Listo para tomar el control?
             </h2>
             <p className="font-sans text-lg text-muted-foreground mt-6">
-                Prueba nuestro Diseñador de IDFs gratuito y experimenta la simplicidad y el poder de Nexus. Sin compromisos, sin tarjeta de crédito.
+                Prueba nuestro Diseñador de IDFs gratuito y experimenta la simplicidad y el poder de Zionary. Sin compromisos, sin tarjeta de crédito.
             </p>
             <form className="mt-10 max-w-lg mx-auto">
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -266,7 +228,7 @@ const Footer = () => (
         <div className="container mx-auto px-4 text-center">
             <div className="flex justify-center items-center gap-4 mb-6">
                 <Sparkle className="h-6 w-6 text-primary" fill="currentColor" />
-                <span className="font-sans text-xl font-bold text-foreground">Nexus</span>
+                <span className="font-sans text-xl font-bold text-foreground">Zionary</span>
             </div>
             <div className="flex justify-center gap-6 mb-6">
                 <a href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
@@ -278,7 +240,7 @@ const Footer = () => (
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Política de Privacidad</a>
             </div>
             <p className="text-muted-foreground font-sans text-sm">
-                &copy; 2025 Nexus Technologies S.A.P.I. de C.V.
+                &copy; 2025 Zionary Technologies S.A.P.I. de C.V.
             </p>
         </div>
     </footer>
