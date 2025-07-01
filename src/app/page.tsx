@@ -1,35 +1,15 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Linkedin, Sparkle } from "lucide-react";
-import Image from "next/image";
 import { FeaturesMosaic } from '@/components/features-mosaic';
 import { HeroSection } from '@/components/hero-section';
-
-const useScrollObserver = (options: IntersectionObserverInit) => {
-    const [elements, setElements] = useState<HTMLElement[]>([]);
-    const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
-
-    useEffect(() => {
-        if (!elements.length) return;
-        const observer = new IntersectionObserver((entries) => {
-            setEntries(entries);
-        }, options);
-
-        elements.forEach(element => observer.observe(element));
-
-        return () => {
-            elements.forEach(element => observer.unobserve(element));
-        };
-    }, [elements, options]);
-
-    return [setElements, entries] as const;
-};
+import { PricingSection } from '@/components/pricing-section';
+import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
 
 export default function HomePage() {
     const featuresRef = useRef<HTMLDivElement>(null);
@@ -106,68 +86,6 @@ const TrustBar = () => {
                 </div>
             </div>
         </div>
-    );
-};
-
-const PricingSection = () => {
-    const [isAnnual, setIsAnnual] = useState(false);
-
-    const plans = {
-        monthly: [
-            { name: "Profesional", price: "$299", cta: "Empezar Ahora" },
-            { name: "Business", price: "$599", cta: "Contactar a Ventas", isHighlighted: true },
-            { name: "Enterprise", price: "Contactar", cta: "Contactar a Ventas" },
-        ],
-        annual: [
-            { name: "Profesional", price: "$2,500", cta: "Empezar Ahora" },
-            { name: "Business", price: "$6,000", cta: "Contactar a Ventas", isHighlighted: true },
-            { name: "Enterprise", price: "Contactar", cta: "Contactar a Ventas" },
-        ],
-    };
-
-    const currentPlans = isAnnual ? plans.annual : plans.monthly;
-
-    return (
-        <section className="py-20 lg:py-32 bg-[#111111]">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold">Un Plan para Cada Misión.</h2>
-                    <p className="font-sans text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
-                        Precios transparentes diseñados para escalar contigo.
-                    </p>
-                    <div className="flex items-center justify-center gap-4 mt-8">
-                        <span className={cn("font-medium", !isAnnual && "text-primary")}>Facturación Mensual</span>
-                        <Switch checked={isAnnual} onCheckedChange={setIsAnnual} aria-label="Cambiar a facturación anual" />
-                        <span className={cn("font-medium", isAnnual && "text-primary")}>Facturación Anual (ahorra 20%)</span>
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-                    {currentPlans.map((plan) => (
-                        <Card key={plan.name} className={cn(
-                            "flex flex-col h-full transition-all duration-300 rounded-xl",
-                            plan.isHighlighted
-                                ? "bg-slate-100 text-background scale-105 shadow-2xl shadow-primary/20"
-                                : "glass-card hover:border-primary/70 hover:scale-[1.02]"
-                        )}>
-                            <CardHeader className="pt-8">
-                                <CardTitle className={cn("font-sans text-2xl", plan.isHighlighted ? "text-primary" : "text-foreground")}>{plan.name}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="flex-grow">
-                                <div className="mb-6">
-                                    <span className="font-sans text-4xl font-bold">{plan.price}</span>
-                                    <span className={cn("text-muted-foreground", plan.isHighlighted && "text-slate-500")}>{isAnnual ? ' /año' : ' /mes'}</span>
-                                </div>
-                            </CardContent>
-                            <CardFooter>
-                                <Button className={cn("w-full font-bold text-lg h-12", plan.isHighlighted ? "bg-primary hover:bg-primary/90 text-primary-foreground" : "bg-primary/20 hover:bg-primary/30 text-primary-foreground")}>
-                                    {plan.cta}
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
     );
 };
 
