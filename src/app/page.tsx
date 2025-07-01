@@ -8,6 +8,7 @@ import { Linkedin, Sparkle } from "lucide-react";
 import { FeaturesMosaic } from '@/components/features-mosaic';
 import { HeroSection } from '@/components/hero-section';
 import { PricingSection } from '@/components/pricing-section';
+import { TestimonialSection } from '@/components/testimonial-section';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
@@ -29,7 +30,6 @@ export default function HomePage() {
             }} />
             <main>
                 <HeroSection />
-                <TrustBar />
                 <div ref={featuresRef}>
                     <FeaturesMosaic />
                 </div>
@@ -72,53 +72,6 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
         </header>
     </div>
 );
-
-const TrustBar = () => {
-    const logos = ["TechCorp", "Industrias de México", "Logística Global", "Bajanet", "Syscom"];
-    return (
-        <div className="py-12 bg-[#111111]">
-            <div className="container mx-auto px-4 text-center">
-                <p className="mb-8 font-sans text-sm font-semibold tracking-widest text-muted-foreground uppercase">CON LA CONFIANZA DE EQUIPOS EN:</p>
-                <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 md:gap-x-16">
-                    {logos.map(logo => (
-                        <span key={logo} className="font-sans text-xl text-muted-foreground/60 transition-colors hover:text-muted-foreground/80">{logo}</span>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const TestimonialSection = () => (
-    <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 max-w-4xl">
-            <Card className="glass-card overflow-hidden rounded-2xl">
-                <div className="grid md:grid-cols-3 items-center">
-                    <div className="md:col-span-1">
-                        <Image
-                            src="https://placehold.co/400x400"
-                            alt="Foto de Carlos Valenzuela"
-                            width={400}
-                            height={400}
-                            className="w-full h-full object-cover"
-                            data-ai-hint="professional headshot"
-                        />
-                    </div>
-                    <div className="md:col-span-2 p-8 md:p-12">
-                        <blockquote className="font-sans text-xl lg:text-2xl font-semibold leading-snug text-foreground">
-                            "Zionary transformó nuestro caos en claridad. Lo que antes nos tomaba días de auditoría manual, ahora lo vemos en segundos. Es, sin duda, la herramienta que nuestro data center merecía."
-                        </blockquote>
-                        <footer className="mt-6">
-                            <p className="font-bold text-lg text-foreground/90">Carlos Valenzuela</p>
-                            <p className="text-muted-foreground">Gerente de TI, TechCorp Industries</p>
-                        </footer>
-                    </div>
-                </div>
-            </Card>
-        </div>
-    </section>
-);
-
 
 const LeadCaptureSection = () => (
     <section className="py-20 lg:py-32">
