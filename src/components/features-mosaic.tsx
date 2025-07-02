@@ -1,10 +1,11 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     X, Server, Cable, Map, Sparkle, Zap, ListChecks, 
-    BarChart, Rocket, Box
+    BarChart, Rocket, Box, Database
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -215,8 +216,8 @@ export function FeaturesMosaic() {
     };
 
     return (
-        <section className="bg-[#111111] py-20 lg:py-24 relative overflow-hidden">
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(123,97,255,0.1)_0%,_rgba(123,97,255,0)_40%)]"></div>
+        <section className="py-20 lg:py-24 relative overflow-hidden">
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_hsl(var(--primary)/0.15)_0%,_transparent_50%)]"></div>
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div 
                     className="text-center mb-16"

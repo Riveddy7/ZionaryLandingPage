@@ -22,26 +22,32 @@ export default function HomePage() {
     };
 
     return (
-        <div className="bg-[#111111] text-foreground font-sans antialiased">
+        <div className="bg-background text-foreground font-sans antialiased">
             <Navbar onLinkClick={{
                 features: () => scrollTo(featuresRef),
                 pricing: () => scrollTo(pricingRef),
                 testimonials: () => scrollTo(testimonialsRef),
             }} />
             <main>
-                <HeroSection />
-                <div ref={featuresRef}>
+                <div className="bg-background">
+                    <HeroSection />
+                </div>
+                <div ref={featuresRef} className="bg-card">
                     <FeaturesMosaic />
                 </div>
-                <div ref={pricingRef}>
+                <div ref={pricingRef} className="bg-background">
                     <PricingSection />
                 </div>
-                <div ref={testimonialsRef}>
+                <div ref={testimonialsRef} className="bg-card">
                     <TestimonialSection />
                 </div>
-                <LeadCaptureSection />
+                <div className="bg-background">
+                    <LeadCaptureSection />
+                </div>
             </main>
-            <Footer />
+            <div className="bg-background">
+              <Footer />
+            </div>
         </div>
     );
 }

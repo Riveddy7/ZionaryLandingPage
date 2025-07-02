@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -50,7 +51,8 @@ const TestimonialCard = ({ quote, zionarySolution }: Testimonial) => (
 
 export function TestimonialSection() {
   return (
-    <section className="py-20 lg:py-24 bg-[#111111]">
+    <section className="py-20 lg:py-24 relative">
+      <div className="absolute inset-x-0 top-0 h-96 w-full bg-[linear-gradient(to_bottom,hsl(var(--primary)/0.05)_0%,transparent_100%)] -z-10"></div>
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"

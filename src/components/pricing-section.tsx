@@ -88,8 +88,9 @@ export function PricingSection() {
     };
 
     return (
-        <section id="precios" className="py-20 lg:py-32 bg-[#111111] overflow-hidden">
-            <div className="container mx-auto px-4">
+        <section id="precios" className="py-20 lg:py-32 overflow-hidden relative">
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[500px] w-full bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.1)_0%,transparent_70%)] -z-0"></div>
+            <div className="container mx-auto px-4 relative">
                 <motion.div 
                     className="text-center mb-16"
                     initial={{ opacity: 0, y: -20 }}

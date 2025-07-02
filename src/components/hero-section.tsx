@@ -4,7 +4,7 @@ import Image from "next/image";
 export function HeroSection() {
     return (
         <section className="pt-28 md:pt-32 pb-10">
-            <div className="container max-w-5xl mx-auto">
+            <div className="container max-w-8xl mx-auto">
                 <div className="relative text-center overflow-hidden rounded-3xl border border-white/10 hero-frame-glow p-1">
                     <div className="relative z-10 px-6 pt-20 pb-10">
                         <h1 className="text-7xl lg:text-8xl font-bold tracking-tighter text-foreground font-sans">

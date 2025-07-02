@@ -95,7 +95,7 @@ export default {
         },
         'marquee-slow': {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-50%)' },
+          to: { transform: 'translateX(-200%)' },
         },
       },
       animation: {
@@ -104,7 +104,7 @@ export default {
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
-        'marquee-slow': 'marquee-slow 80s linear infinite',
+        'marquee-slow': 'marquee-slow 60s linear infinite',
       },
     },
   },
