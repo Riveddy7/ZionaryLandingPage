@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    Server, BarChart, Rocket, Sparkle, Map, Zap, ListChecks, Cable, Database, Box
+    Server, BarChart, Rocket, Sparkle, Map, Zap, ListChecks, Cable, Box
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -47,14 +47,14 @@ const featuresData = {
         title: 'Planos de Planta',
         description: 'Sube el plano de tu centro de datos y coloca tus racks sobre él. Obtén una visión de águila de tu distribución física y planifica el crecimiento de forma inteligente.',
         icon: <Map className="w-8 h-8" />,
-        position: 'col-start-4 row-start-2',
+        position: 'col-start-4 row-start-2 row-span-2',
     },
     PlataformaModerna: {
         id: 'PlataformaModerna',
         title: 'Plataforma Moderna',
         description: 'Construido con tecnología de punta (Next.js, Supabase) para una experiencia de usuario rápida, segura y confiable en cualquier dispositivo.',
         icon: <Zap className="w-8 h-8" />,
-        position: 'col-start-4 row-start-3',
+        position: 'col-start-1 row-start-3',
     },
     ClaridadYOrden: {
         id: 'ClaridadYOrden',
@@ -81,23 +81,31 @@ const featuresData = {
 
 const peripheralFeatures = Object.values(featuresData).filter(f => f.id);
 
-const CentralPanel = ({ title, description }: { title: string, description: string }) => (
-    <div className="glass-card col-start-2 col-span-2 row-start-2 row-span-2 rounded-2xl p-8 flex flex-col justify-center items-center text-center border-primary/30">
-         <AnimatePresence mode="wait">
-            <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="flex flex-col items-center justify-center"
-            >
-                <h3 className="font-bold text-3xl font-sans bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 mb-4">{title}</h3>
-                <p className="text-muted-foreground max-w-md">{description}</p>
-            </motion.div>
-        </AnimatePresence>
-    </div>
-);
+const CentralPanel = ({ title, description, activeFeatureId }: { title: string, description: string, activeFeatureId: string }) => {
+    const isActivated = activeFeatureId !== 'ControlTotal';
+    return (
+        <div className={cn(
+            "glass-card col-start-2 col-span-2 row-start-2 row-span-2 rounded-2xl p-8 flex flex-col justify-center items-center text-center transition-all duration-300",
+            isActivated 
+                ? "bg-gradient-to-br from-primary/20 to-primary/5 border-primary shadow-[0_0_25px_hsl(var(--primary)/0.5)]"
+                : "border-primary/30"
+        )}>
+             <AnimatePresence mode="wait">
+                <motion.div
+                    key={title}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="flex flex-col items-center justify-center"
+                >
+                    <h3 className="font-bold text-3xl font-sans bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 mb-4">{title}</h3>
+                    <p className="text-muted-foreground max-w-md">{description}</p>
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const FeatureCard = ({ feature, isActive, onClick }: { feature: typeof featuresData[keyof typeof featuresData], isActive: boolean, onClick: () => void }) => (
     <motion.button
@@ -145,8 +153,8 @@ export function FeaturesMosaic() {
                     </p>
                 </motion.div>
                 
-                <div className="grid grid-cols-4 grid-rows-4 gap-4 aspect-[16/10] max-w-6xl mx-auto">
-                    <CentralPanel title={activeData.title} description={activeData.description} />
+                <div className="grid grid-cols-4 grid-rows-4 gap-4 aspect-[16/9] max-w-6xl mx-auto">
+                    <CentralPanel title={activeData.title} description={activeData.description} activeFeatureId={activeFeature} />
                     
                     {peripheralFeatures.map((feature) => (
                          <FeatureCard
@@ -161,5 +169,3 @@ export function FeaturesMosaic() {
         </section>
     );
 }
-
-    
