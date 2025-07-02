@@ -93,6 +93,10 @@ export default {
             boxShadow: '0 0 30px hsl(var(--primary)/0.6), 0 0 45px hsl(var(--primary-end)/0.5)',
           },
         },
+        'marquee-slow': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -100,6 +104,7 @@ export default {
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
+        'marquee-slow': 'marquee-slow 80s linear infinite',
       },
     },
   },
