@@ -10,11 +10,12 @@ export function HeroSection() {
             
             <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 to-transparent to-70% -z-0"></div>
 
+            {/* Mobile/Tablet view */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 w-full max-w-4xl mx-auto rounded-2xl border border-white/10 overflow-hidden"
+                className="relative z-10 w-full max-w-4xl mx-auto rounded-2xl border border-white/10 overflow-hidden lg:hidden"
                 style={{
                     boxShadow: '0 0 40px rgba(123, 97, 255, 0.2)'
                 }}
@@ -50,6 +51,49 @@ export function HeroSection() {
                             size="lg" 
                             variant="outline" 
                             className="w-full sm:w-auto font-bold bg-transparent border-white/20 text-white transition-all duration-300 hover:bg-white/10"
+                        >
+                            Ver Planes
+                        </Button>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Desktop view */}
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden lg:flex flex-col items-center justify-center relative w-full max-w-6xl mx-auto"
+            >
+                 <Image
+                    src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/landing-images//HeroSectPC.webp"
+                    alt="Zionary Dashboard"
+                    width={1436}
+                    height={852}
+                    className="rounded-2xl"
+                    data-ai-hint="dashboard complex"
+                    priority
+                />
+                <div className="relative z-10 -mt-48 text-center">
+                    <h1 className="font-sans text-5xl font-bold tracking-tight text-white lg:text-6xl drop-shadow-2xl">
+                        El Sistema Operativo para Datacenter.
+                    </h1>
+                    
+                    <p className="mt-6 font-sans text-lg text-white/80 lg:text-xl drop-shadow-xl">
+                        Infraestructura compleja, gestión simple.
+                    </p>
+                    
+                    <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <Button 
+                            size="lg" 
+                            className="w-full sm:w-auto font-bold bg-gradient-to-r from-[#8A78FF] to-[#7B61FF] text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+                        >
+                            Probar Diseñador Gratuito
+                        </Button>
+                        <Button 
+                            size="lg" 
+                            variant="outline" 
+                            className="w-full sm:w-auto font-bold bg-white/10 border-white/20 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
                         >
                             Ver Planes
                         </Button>
