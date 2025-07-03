@@ -49,13 +49,16 @@ const DotButton = ({ selected, onClick }: { selected: boolean; onClick: () => vo
 
 export function StoryCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-      { loop: true }, 
-      [Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]
+    { loop: true },
+    [Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]
   );
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -65,7 +68,7 @@ export function StoryCarousel() {
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    setScrollSnaps(emblaApi.scrollSnaps);
+    setScrollSnaps(emblaApi?.scrollSnapList?.() || []);
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
@@ -77,7 +80,7 @@ export function StoryCarousel() {
           {stories.map((story, index) => (
             <div key={index} className="relative flex-[0_0_100%] flex items-center justify-center text-center bg-grid-pattern">
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15)_0%,transparent_60%)]" />
-              
+
               <AnimatePresence>
                 {index === selectedIndex && (
                   <motion.div
@@ -97,25 +100,25 @@ export function StoryCarousel() {
           ))}
         </div>
       </div>
-      
+
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
         <motion.div
-            animate={{ x: [-8, 8, -8] }}
-            transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: "easeInOut",
-            }}
-            className="flex items-center justify-center gap-2 text-muted-foreground/50"
+          animate={{ x: [-8, 8, -8] }}
+          transition={{
+            repeat: Infinity,
+            duration: 1.5,
+            ease: "easeInOut",
+          }}
+          className="flex items-center justify-center gap-2 text-muted-foreground/50"
         >
-            <MoveHorizontal className="w-5 h-5" />
-            <span className="text-xs font-sans">DESLIZA</span>
+          <MoveHorizontal className="w-5 h-5" />
+          <span className="text-xs font-sans">DESLIZA</span>
         </motion.div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-3/4">
         <div className="flex items-center justify-center gap-2">
-          {scrollSnaps.map((_, index) => (
+          {(Array.isArray(scrollSnaps) ? scrollSnaps : []).map((_, index) => (
             <DotButton
               key={index}
               selected={index === selectedIndex}
