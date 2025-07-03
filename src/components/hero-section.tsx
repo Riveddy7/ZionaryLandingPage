@@ -8,6 +8,8 @@ export function HeroSection() {
     return (
         <section className="relative min-h-screen w-full overflow-hidden bg-background py-24 flex items-center justify-center">
             
+            <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 to-transparent to-70% -z-0"></div>
+
             <motion.div
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -32,17 +34,17 @@ export function HeroSection() {
                 className="relative z-10 mx-auto max-w-3xl px-4"
             >
                 <div 
-                    className="rounded-2xl border border-white/10 bg-black/40 p-8 text-center backdrop-blur-xl md:p-12"
+                    className="rounded-2xl border border-white/10 bg-black/60 p-8 text-center backdrop-blur-lg md:p-12"
                     style={{
                         boxShadow: '0 0 40px rgba(123, 97, 255, 0.2)'
                     }}
                 >
                     <h1 className="font-sans text-5xl font-bold tracking-tight text-white lg:text-6xl">
-                        Infraestructura compleja, gestión simple.
+                        El Sistema Operativo para Datacenter.
                     </h1>
                     
-                    <p className="mt-6 font-sans text-lg text-[#A3A3A3] lg:text-xl">
-                        El sistema operativo para tu centro de datos.
+                    <p className="mt-6 font-sans text-lg text-muted-foreground lg:text-xl">
+                        Infraestructura compleja, gestión simple.
                     </p>
                     
                     <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
