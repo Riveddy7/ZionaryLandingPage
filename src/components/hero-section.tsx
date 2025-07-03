@@ -11,27 +11,10 @@ export function HeroSection() {
             <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 to-transparent to-70% -z-0"></div>
 
             <motion.div
-                initial={{ opacity: 0, y: 100 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0"
-            >
-                <Image
-                    src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/floor-plans-optimized//unnamed.webp"
-                    alt="Zionary Dashboard Preview"
-                    width={900}
-                    height={600}
-                    className="w-[900px] max-w-none rounded-t-2xl border-t border-x border-white/10"
-                    data-ai-hint="dashboard ui"
-                    priority
-                />
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-                className="relative z-10 mx-auto max-w-3xl px-4"
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 w-full max-w-4xl mx-auto"
             >
                 <div 
                     className="rounded-2xl border border-white/10 bg-black/60 p-8 text-center backdrop-blur-lg md:p-12"
@@ -62,6 +45,23 @@ export function HeroSection() {
                             Ver Planes
                         </Button>
                     </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        className="relative mt-12"
+                    >
+                        <Image
+                            src="https://cgljmcahcshjqglctjwk.supabase.co/storage/v1/object/public/floor-plans-optimized//unnamed.webp"
+                            alt="Zionary Dashboard Preview"
+                            width={900}
+                            height={600}
+                            className="w-full rounded-lg border border-white/10"
+                            data-ai-hint="dashboard ui"
+                            priority
+                        />
+                    </motion.div>
                 </div>
             </motion.div>
 
