@@ -7,6 +7,7 @@ import {
     Server, BarChart, Rocket, Sparkle, Map, Zap, ListChecks, Cable, Box
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { StoryCarousel } from './story-carousel';
 
 const featuresData = {
     ControlTotal: {
@@ -153,7 +154,7 @@ export function FeaturesMosaic() {
                     </p>
                 </motion.div>
                 
-                <div className="grid grid-cols-4 grid-rows-4 gap-4 aspect-[16/9] max-w-6xl mx-auto">
+                <div className="hidden lg:grid grid-cols-4 grid-rows-4 gap-4 aspect-[16/9] max-w-6xl mx-auto">
                     <CentralPanel title={activeData.title} description={activeData.description} activeFeatureId={activeFeature} />
                     
                     {peripheralFeatures.map((feature) => (
@@ -164,6 +165,10 @@ export function FeaturesMosaic() {
                             onClick={() => setActiveFeature(feature.id!)}
                         />
                     ))}
+                </div>
+
+                <div className="block lg:hidden -mx-4">
+                    <StoryCarousel />
                 </div>
             </div>
         </section>

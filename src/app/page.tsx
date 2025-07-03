@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Linkedin, Sparkle } from "lucide-react";
+import { Linkedin, Sparkle, Menu } from "lucide-react";
 import { FeaturesMosaic } from '@/components/features-mosaic';
 import { HeroSection } from '@/components/hero-section';
 import { PricingSection } from '@/components/pricing-section';
@@ -66,14 +66,22 @@ const Navbar = ({ onLinkClick }: { onLinkClick: NavLinkProps }) => (
                     <Sparkle className="h-6 w-6 text-primary" fill="currentColor" />
                     <span className="font-sans text-xl font-bold text-foreground">Zionary</span>
                 </div>
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+                <nav className="hidden lg:flex items-center gap-8 text-sm font-medium">
                     <button onClick={onLinkClick.features} className="text-muted-foreground transition-colors hover:text-primary">Características</button>
                     <button onClick={onLinkClick.pricing} className="text-muted-foreground transition-colors hover:text-primary">Precios</button>
                     <button onClick={onLinkClick.testimonials} className="text-muted-foreground transition-colors hover:text-primary">Testimonios</button>
                 </nav>
-                <Button size="sm" className="font-bold bg-primary/90 hover:bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
-                    Entrar a Zionary
-                </Button>
+                <div className="hidden lg:block">
+                    <Button size="sm" className="font-bold bg-primary/90 hover:bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
+                        Entrar a Zionary
+                    </Button>
+                </div>
+                <div className="lg:hidden">
+                    <Button size="icon" variant="ghost">
+                        <Menu className="h-6 w-6" />
+                        <span className="sr-only">Open menu</span>
+                    </Button>
+                </div>
             </div>
         </header>
     </div>
