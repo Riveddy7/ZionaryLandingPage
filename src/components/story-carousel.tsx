@@ -65,7 +65,7 @@ export function StoryCarousel() {
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    setScrollSnaps(emblaApi.scrollSnaps());
+    setScrollSnaps(emblaApi.scrollSnaps);
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
